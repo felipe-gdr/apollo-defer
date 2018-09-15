@@ -17,7 +17,17 @@ const books = [
   },
   {
     title: "Jurassic Park",
-    author: "Michael Crichton"
+    author: "Michael Crichton",
+    comments: [
+      {
+        user: "Alberta",
+        text: "Amazing :-)"
+      },
+      {
+        user: "Joanna",
+        text: "Excellent"
+      }
+    ]
   }
 ];
 
@@ -45,7 +55,7 @@ const resolvers = {
   Book: {
     comments: (book) => {
       return new Promise(resolve => {
-        setTimeout(() => resolve(book.comments), 5000);
+        setTimeout(() => resolve(book.comments), 2000);
       })
     } 
   }
