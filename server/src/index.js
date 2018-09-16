@@ -13,7 +13,7 @@ const books = [
         user: "Mary",
         text: "It is a book"
       }
-    ]
+    ],
   },
   {
     title: "Jurassic Park",
@@ -28,7 +28,12 @@ const books = [
         text: "Excellent"
       }
     ]
-  }
+  },
+  {
+    title: "Moby Dick",
+    author: "Herman Melville",
+    comments: []
+  } 
 ];
 
 const typeDefs = gql`
@@ -53,16 +58,16 @@ const resolvers = {
     books: () => books
   },
   Book: {
-    comments: (book) => {
+    comments: book => {
       return new Promise(resolve => {
         setTimeout(() => resolve(book.comments), 2000);
       })
-    } 
-  }
+    },
+  },
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen().then(({ url }) => {
+server.listen(8080).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
